@@ -21,6 +21,7 @@ How to let people in the server:
 - Provide people you want in your public IP address, and it should work.
 
 A little help to get you going with adjustments, if you want to:
+- Server name: Scripts\Items\Misc\ServerList.cs edit the string part of ServerName
 - Guarded Regions: RunUO\Data\Regions.xml
 - Stats cap: Server\Mobile.cs m_StatCap = 225 (more than one line to change)
 - Skills cap: Server\Skills.cs m_Cap = 7000 (more than one line to change)
