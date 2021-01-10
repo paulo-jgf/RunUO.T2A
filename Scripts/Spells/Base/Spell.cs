@@ -37,8 +37,8 @@ namespace Server.Spells
 		public virtual bool DelayedDamage{ get{ return false; } }
 
         public virtual bool DelayedDamageStacking { get { return true; } }
-        //In reality, it's ANY delayed Damage spell Post-AoS that can't stack, but, only 
-        //Expo & Magic Arrow have enough delay and a short enough cast time to bring up 
+        //In reality, it's ANY delayed Damage spell Post-AoS that can't stack, but, only
+        //Expo & Magic Arrow have enough delay and a short enough cast time to bring up
         //the possibility of stacking 'em.  Note that a MA & an Explosion will stack, but
 		//of course, two MA's won't.
 
@@ -200,6 +200,10 @@ namespace Server.Spells
 			double targetRS = target.Skills[SkillName.MagicResist].Value;
 
 			//m_Caster.CheckSkill( DamageSkill, 0.0, 120.0 );
+
+			// Magic Resist skillgain when hit by spell
+			// if ( target.Player )
+			target.CheckSkill( SkillName.MagicResist, 0.0, 100.0 );
 
 			if( casterEI > targetRS )
 				scalar = 1.0 + (casterEI - targetRS) / 500.0;

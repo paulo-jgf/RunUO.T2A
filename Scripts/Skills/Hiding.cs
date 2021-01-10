@@ -73,8 +73,11 @@ namespace Server.SkillHandlers
 						}
 					}
 				}
+        // original check
+			  ok = !badCombat && m.CheckSkill( SkillName.Hiding, 0.0 - bonus, 100.0 - bonus );
+        //No bonus at all for nothing
+        //ok = !badCombat && m.CheckSkill( SkillName.Hiding, 0.0, 100.0 );
 
-				ok = !badCombat && m.CheckSkill( SkillName.Hiding, 0.0 - bonus, 100.0 - bonus );
 			}
 
 			if ( badCombat )
@@ -85,7 +88,7 @@ namespace Server.SkillHandlers
 
 				return TimeSpan.FromSeconds( 1.0 );
 			}
-			else 
+			else
 			{
 				if ( ok )
 				{
@@ -96,7 +99,6 @@ namespace Server.SkillHandlers
 				else
 				{
 					m.RevealingAction();
-
 					m.LocalOverheadMessage( MessageType.Regular, 0x22, 501241 ); // You can't seem to hide here.
 				}
 

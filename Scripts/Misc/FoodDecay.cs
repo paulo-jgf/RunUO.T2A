@@ -9,15 +9,15 @@ namespace Server.Misc
 		{
 			new FoodDecayTimer().Start();
 		}
-
-		public FoodDecayTimer() : base( TimeSpan.FromMinutes( 5 ), TimeSpan.FromMinutes( 5 ) )
+    //Default 5 / 5 minutes
+		public FoodDecayTimer() : base( TimeSpan.FromMinutes( 45 ), TimeSpan.FromMinutes( 60 ) )
 		{
 			Priority = TimerPriority.OneMinute;
 		}
 
 		protected override void OnTick()
 		{
-			FoodDecay();			
+			FoodDecay();
 		}
 
 		public static void FoodDecay()

@@ -30,7 +30,7 @@ namespace Server.Mobiles
 
 				Add( new GenericBuyInfo( "Red Potion", typeof( RefreshPotion ), 15, 20, 0xF0B, 0 ) );
 				Add( new GenericBuyInfo( "Blue Potion", typeof( AgilityPotion ), 15, 20, 0xF08, 0 ) );
-				Add( new GenericBuyInfo( "Black Potion", typeof( NightSightPotion ), 15, 20, 0xF06, 0 ) ); 
+				Add( new GenericBuyInfo( "Black Potion", typeof( NightSightPotion ), 15, 20, 0xF06, 0 ) );
 				Add( new GenericBuyInfo( "Yellow Potion", typeof( LesserHealPotion ), 15, 20, 0xF0C, 0 ) );
 				Add( new GenericBuyInfo( "White Potion", typeof( StrengthPotion ), 15, 20, 0xF09, 0 ) );
 				Add( new GenericBuyInfo( "Orange Potion", typeof( LesserCurePotion ), 15, 20, 0xF07, 0 ) );
@@ -70,6 +70,13 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Teleport Scroll", typeof( TeleportScroll ), 32, 20, 0x1F42, 0 ) );
 				Add( new GenericBuyInfo( "Unlock Scroll", typeof( UnlockScroll ), 32, 20, 0x1F43, 0 ) );
 				Add( new GenericBuyInfo( "Wall of Stone Scroll", typeof( WallOfStoneScroll ), 32, 20, 0x1F44, 0 ) );
+
+				// Lets add some recall and mark scrolls for now. It should be removed to preserve economy ASAP.
+				Add( new GenericBuyInfo( "Recall Scroll", typeof( RecallScroll ), 50, 20, 0x1F4C, 0 ) );
+				Add( new GenericBuyInfo( "Mark Scroll", typeof( MarkScroll ), 150, 20, 0x1F59, 0 ) );
+
+				// ID Wand for now. It should be removed to preserve economy ASAP.
+				Add( new GenericBuyInfo( "Item ID Wand", typeof( IDWand ), 500, 2, 0xDF3, 0 ) );
 			}
 		}
 
@@ -97,7 +104,7 @@ namespace Server.Mobiles
 				Add( typeof( MagicArrowScroll ), 4 );
 				Add( typeof( NightSightScroll ), 4 );
 				Add( typeof( WeakenScroll ), 4 );
-				
+
 				Add( typeof( AgilityScroll ), 6 );
 				Add( typeof( CunningScroll ), 6 );
 				Add( typeof( CureScroll ), 6 );
@@ -106,7 +113,7 @@ namespace Server.Mobiles
 				Add( typeof( MagicUnTrapScroll ), 6 );
 				Add( typeof( ProtectionScroll ), 6 );
 				Add( typeof( StrengthScroll ), 6 );
-				
+
 				Add( typeof( BlessScroll ), 8 );
 				Add( typeof( FireballScroll ), 8 );
 				Add( typeof( MagicLockScroll ), 8 );

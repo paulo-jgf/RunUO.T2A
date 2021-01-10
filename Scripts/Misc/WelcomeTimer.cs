@@ -12,7 +12,7 @@ namespace Server.Misc
 
 		private static string[] m_Messages = TestCenter.Enabled ?
 		    new string[]
-		    {
+		    {//This is the welcome message when TestCenter is enabled.
 		        "Welcome to this test shard.  You are able to customize your character's stats and skills at anytime to anything you wish.  To see the commands to do this just say 'help'.",
 		        "You will find a bank check worth 1,000,000 gold in your bank!",
 		        "A spellbook and a bag of reagents has been placed into your bank box.",
@@ -25,16 +25,21 @@ namespace Server.Misc
 		        "A bag of PowerScrolls has been placed in your bank box."
 		    } :
 		    new string[]
-		    {	//Yes, this message is a pathetic message, It's suggested that you change it.
-		        "Welcome to this shard.",
-		        "Please enjoy your stay."
+		    {	//This is the welcome message when TestCenter is disabled.
+		        "Bem vindo ao Epoca de Paz 2! (Grimoric T2A RunUO)",
+		        "A tentativa aqui é recriar algo parecido com a expansão T2A,",
+            "que era o período próximo ao Client do EGShard (2001 - 2002),",
+            "mas sem super personagens (como no AoW e na OSI Original):",
+            "Soma máxima stats = 225; Soma máxima skills = 700.0",
+            "Isso é UO! Se morrer procure um healer ou uma Ank!",
+            "Divirta-se!"
 		    };
 
 		public WelcomeTimer( Mobile m ) : this( m, m_Messages.Length )
 		{
 		}
 
-		public WelcomeTimer( Mobile m, int count ) : base( TimeSpan.FromSeconds( 5.0 ), TimeSpan.FromSeconds( 10.0 ) )
+		public WelcomeTimer( Mobile m, int count ) : base( TimeSpan.FromSeconds( 5.0 ), TimeSpan.FromSeconds( 5.0 ) )
 		{
 			m_Mobile = m;
 			m_Count = count;

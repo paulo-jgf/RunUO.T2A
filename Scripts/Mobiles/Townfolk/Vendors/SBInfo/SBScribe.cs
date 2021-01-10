@@ -25,6 +25,8 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Book", typeof( BrownBook ), 15, 10, 0xFEF, 0 ) );
 				Add( new GenericBuyInfo( "Book", typeof( TanBook ), 15, 10, 0xFF0, 0 ) );
 				Add( new GenericBuyInfo( "Book", typeof( BlueBook ), 15, 10, 0xFF2, 0 ) );
+        // Let's sell the Runebook. It should be removed to preserve economy ASAP.
+        Add( new GenericBuyInfo( "Runebook", typeof( Runebook ), 1500, 10, 0xEFA, 0x461 ) );
 			//	Add( new GenericBuyInfo( "Runebook", typeof( Runebook ), 3500, 10, 0xEFA, 0x461 ) );
 			}
 		}

@@ -7,7 +7,8 @@ namespace Server.Items
 		private Timer m_DecayTimer;
 		private DateTime m_DecayTime;
 
-		private static TimeSpan m_DefaultDecayTime = TimeSpan.FromMinutes( 7.0 );
+    // UO decay default is 7 minutes, it is too short for novice players
+		private static TimeSpan m_DefaultDecayTime = TimeSpan.FromMinutes( 21.0 );
 
 		public DecayedCorpse( string name ) : base( Utility.Random( 0xECA, 9 ) )
 		{

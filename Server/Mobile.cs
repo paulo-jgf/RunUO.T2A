@@ -1188,15 +1188,15 @@ namespace Server
 		}
 
 		/* Logout:
-		 * 
+		 *
 		 * When a client logs into mobile x
 		 *  - if ( x is Internalized ) move x to logout location and map
-		 * 
+		 *
 		 * When a client attached to a mobile disconnects
 		 *  - LogoutTimer is started
 		 *	   - Delay is taken from Region.GetLogoutDelay to allow insta-logout regions.
 		 *     - OnTick : Location and map are stored, and mobile is internalized
-		 * 
+		 *
 		 * Some things to consider:
 		 *  - An internalized person getting killed (say, by poison). Where does the body go?
 		 *  - Regions now have a GetLogoutDelay( Mobile m ); virtual function (see above)
@@ -3010,7 +3010,9 @@ namespace Server
 			{
 				for( int i = 0; i < m_StuckMenuUses.Length; ++i )
 				{
-					if( DateTime.Now - m_StuckMenuUses[i] > TimeSpan.FromDays( 1.0 ) )
+          // Helping newbies a bit
+          // Default if( DateTime.Now - m_StuckMenuUses[i] > TimeSpan.FromDays( 1.0 ) )
+					if( DateTime.Now - m_StuckMenuUses[i] > TimeSpan.FromMinutes( 15.0 ) )
 					{
 						return true;
 					}
@@ -4765,7 +4767,9 @@ namespace Server
 
 			for( int i = 0; i < m_StuckMenuUses.Length; ++i )
 			{
-				if( DateTime.Now - m_StuckMenuUses[i] > TimeSpan.FromDays( 1.0 ) )
+        // Helping newbies a bit
+        // if( DateTime.Now - m_StuckMenuUses[i] > TimeSpan.FromDays( 1.0 ) )
+				if( DateTime.Now - m_StuckMenuUses[i] > TimeSpan.FromMinutes( 15.0 ) )
 				{
 					m_StuckMenuUses[i] = DateTime.Now;
 					return;
@@ -6955,7 +6959,7 @@ namespace Server
 		}
 
 		#endregion
-		
+
 		public virtual int HuedItemID
 		{
 			get
@@ -8778,7 +8782,7 @@ namespace Server
 		///			SendMessage( "That is too heavy for you to lift." );
 		///			return false;
 		///		}
-		///		
+		///
 		///		return base.OnDragLift( item );
 		/// }</code>
 		/// </example>
@@ -9295,7 +9299,7 @@ namespace Server
 							if ( sendHealthbarPoison ) {
 								if ( hbpPacket == null )
 									hbpPacket = Packet.Acquire( new HealthbarPoison( m ) );
-								
+
 								state.Send( hbpPacket );
 							}
 
@@ -9877,7 +9881,7 @@ namespace Server
 		private static bool m_DisableDismountInWarmode;
 
 		public static bool DisableDismountInWarmode { get { return m_DisableDismountInWarmode; } set { m_DisableDismountInWarmode = value; } }
-		
+
 		#region OnDoubleClick[..]
 
 		/// <summary>
@@ -10039,7 +10043,7 @@ namespace Server
 
 		public static bool DisableHiddenSelfClick { get { return m_DisableHiddenSelfClick; } set { m_DisableHiddenSelfClick = value; } }
 
-		public virtual bool ShowFameTitle { get { return true; } }//(m_Player || m_Body.IsHuman) && m_Fame >= 10000; } 
+		public virtual bool ShowFameTitle { get { return true; } }//(m_Player || m_Body.IsHuman) && m_Fame >= 10000; }
 
 		/// <summary>
 		/// Overridable. Event invoked when the Mobile is single clicked.

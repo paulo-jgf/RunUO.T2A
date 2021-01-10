@@ -35,7 +35,7 @@ namespace Server.Mobiles
 
 		public virtual bool IsActiveVendor { get { return true; } }
 		public virtual bool IsActiveBuyer { get { return IsActiveVendor; } } // response to vendor SELL
-		public virtual bool IsActiveSeller { get { return IsActiveVendor; } } // repsonse to vendor BUY
+		public virtual bool IsActiveSeller { get { return IsActiveVendor; } } // response to vendor BUY
 
 		public virtual NpcGuild NpcGuild { get { return NpcGuild.None; } }
 
@@ -483,7 +483,8 @@ namespace Server.Mobiles
 						if ( item is Container && ( (Container)item ).Items.Count != 0 )
 							continue;
 
-						if ( item.IsStandardLoot() && item.Movable && ssi.IsSellable( item ) )
+            // can now sell newbie items. Removed condition: item.IsStandardLoot() &&
+						if ( item.Movable && ssi.IsSellable( item ) )
 							table[item] = new SellItemState( item, ssi.GetSellPriceFor( item ), ssi.GetNameFor( item ) );
 					}
 				}
@@ -871,7 +872,8 @@ namespace Server.Mobiles
 
 			foreach ( SellItemResponse resp in list )
 			{
-				if ( resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.IsStandardLoot() || !resp.Item.Movable || ( resp.Item is Container && ( (Container)resp.Item ).Items.Count != 0 ) )
+        // can now sell newbie items. Removed condition: || !resp.Item.IsStandardLoot()
+				if ( resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.Movable || ( resp.Item is Container && ( (Container)resp.Item ).Items.Count != 0 ) )
 					continue;
 
 				foreach ( IShopSellInfo ssi in info )
@@ -896,7 +898,8 @@ namespace Server.Mobiles
 
 			foreach ( SellItemResponse resp in list )
 			{
-				if ( resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.IsStandardLoot() || !resp.Item.Movable || ( resp.Item is Container && ( (Container)resp.Item ).Items.Count != 0 ) )
+        // can now sell newbie items. Removed condition: || !resp.Item.IsStandardLoot()
+				if ( resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.Movable || ( resp.Item is Container && ( (Container)resp.Item ).Items.Count != 0 ) )
 					continue;
 
 				foreach ( IShopSellInfo ssi in info )
@@ -962,7 +965,42 @@ namespace Server.Mobiles
 					}
 				}
 			}
+      /* Not original T2A stuff: If amount received is too high Gold would drop to the floor, in chunks of 60k
+      after weight limit. Lets try and pay people in their bank, same way vendor takes money from their bank
+      above 2k mark. Will do it above 5k */
+      if ( GiveGold > 5000 )
+      {
+         SayTo( seller, true, "The gold amount of this trade is substantial, {0}gp will be sent thru the Bank, while thy box is not full.", GiveGold );
 
+          // Let's keep the 60k chuncks delivering
+   				while ( GiveGold > 60000 )
+   				{
+   					// seller.BankBox.DropItem( new Gold( 60000 ) ); // Another way to drop to bank
+            // Try to deposit and check bankbox limit (from RealState script)
+            if ( Banker.Deposit( seller, 60000 ) )
+            {
+   					  GiveGold -= 60000;
+            }
+            else
+            {
+              break; // bank is full
+            }
+   				}
+          // Rest of last 60k chunks, if all goes well
+          if ( GiveGold > 0 )
+          {
+            if ( Banker.Deposit( seller, GiveGold ) )
+            {
+   					  GiveGold = 0; // All gold has been deposited
+            }
+            else
+            {
+              SayTo( seller, true, "Forgive me sir, thy Bank box is full. The remaining {0}gp will be handed now.", GiveGold );
+            }
+          }
+      }
+
+      // Original lines for Gold delivery are those ahead, dropping to the backpack in chunks of 60k
 			if ( GiveGold > 0 )
 			{
 				while ( GiveGold > 60000 )
@@ -975,6 +1013,7 @@ namespace Server.Mobiles
 
 				seller.PlaySound( 0x0037 );//Gold dropping sound
 			}
+
 			//no cliloc for this?
 			//SayTo( seller, true, "Thank you! I bought {0} item{1}. Here is your {2}gp.", Sold, (Sold > 1 ? "s" : ""), GiveGold );
 

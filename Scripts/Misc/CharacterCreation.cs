@@ -26,12 +26,13 @@ namespace Server.Misc
 				m.AddItem( pack );
 			}
 
-            PackItem( new GrimsHammer() ); // Testing
+      //PackItem( new GrimsHammer() ); // Testing
 
 			PackItem( new RedBook( "a book", m.Name, 20, true ) );
 			PackItem( new Gold( 1000 ) ); // Starting gold can be customized here
 			PackItem( new Dagger() );
 			PackItem( new Candle() );
+      PackItem( new Apple( 5 ) ); //The poor guy diserves to start with some food
 		}
 
 		private static Item MakeNewbie( Item item )
@@ -254,7 +255,10 @@ namespace Server.Misc
 				newChar.BankBox.DropItem( ticket );
 			}
 
-			CityInfo city = GetStartLocation( args, young );
+      // T2A server Client doesnt present a gump to select a city to spawn for any classes except "Advanced",
+      // wich causes aleatory first spawn among possible StartingCities.
+
+	    CityInfo city = GetStartLocation( args, young );
 
 			newChar.MoveToWorld( city.Location, city.Map );
 
@@ -401,9 +405,9 @@ namespace Server.Misc
 				{
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Anatomy, 30 ),
-							new SkillNameValue( SkillName.Healing, 45 ),
-							new SkillNameValue( SkillName.Swords, 35 ),
+							new SkillNameValue( SkillName.Anatomy, 40 ),
+							new SkillNameValue( SkillName.Healing, 50 ),
+							new SkillNameValue( SkillName.Swords, 40 ),
 							new SkillNameValue( SkillName.Tactics, 50 )
 						};
 
@@ -413,8 +417,8 @@ namespace Server.Misc
 				{
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.EvalInt, 30 ),
-							new SkillNameValue( SkillName.Wrestling, 30 ),
+							new SkillNameValue( SkillName.EvalInt, 40 ),
+							new SkillNameValue( SkillName.Wrestling, 40 ),
 							new SkillNameValue( SkillName.Magery, 50 ),
 							new SkillNameValue( SkillName.Meditation, 50 )
 						};
@@ -425,8 +429,8 @@ namespace Server.Misc
 				{
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Mining, 30 ),
-							new SkillNameValue( SkillName.ArmsLore, 30 ),
+							new SkillNameValue( SkillName.Mining, 40 ),
+							new SkillNameValue( SkillName.ArmsLore, 40 ),
 							new SkillNameValue( SkillName.Blacksmith, 50 ),
 							new SkillNameValue( SkillName.Tinkering, 50 )
 						};
@@ -440,7 +444,7 @@ namespace Server.Misc
 							new SkillNameValue( SkillName.Necromancy, 50 ),
 							new SkillNameValue( SkillName.Focus, 30 ),
 							new SkillNameValue( SkillName.SpiritSpeak, 30 ),
-							new SkillNameValue( SkillName.Swords, 30 ),
+							//new SkillNameValue( SkillName.Swords, 30 ),
 							new SkillNameValue( SkillName.Tactics, 20 )
 						};
 
@@ -450,10 +454,10 @@ namespace Server.Misc
 				{
 					skills = new SkillNameValue[]
 						{
-							new SkillNameValue( SkillName.Chivalry, 51 ),
-							new SkillNameValue( SkillName.Swords, 49 ),
-							new SkillNameValue( SkillName.Focus, 30 ),
-							new SkillNameValue( SkillName.Tactics, 30 )
+							new SkillNameValue( SkillName.Chivalry, 50 ),
+							new SkillNameValue( SkillName.Swords, 40 ),
+							new SkillNameValue( SkillName.Focus, 40 ),
+							new SkillNameValue( SkillName.Tactics, 50 )
 						};
 
 					break;
@@ -464,8 +468,8 @@ namespace Server.Misc
 						{
 							new SkillNameValue( SkillName.Bushido, 50 ),
 							new SkillNameValue( SkillName.Swords, 50 ),
-							new SkillNameValue( SkillName.Anatomy, 30 ),
-							new SkillNameValue( SkillName.Healing, 30 )
+							new SkillNameValue( SkillName.Anatomy, 40 ),
+							new SkillNameValue( SkillName.Healing, 40 )
 					};
 					break;
 				}
@@ -475,8 +479,8 @@ namespace Server.Misc
 						{
 							new SkillNameValue( SkillName.Ninjitsu, 50 ),
 							new SkillNameValue( SkillName.Hiding, 50 ),
-							new SkillNameValue( SkillName.Fencing, 30 ),
-							new SkillNameValue( SkillName.Stealth, 30 )
+							new SkillNameValue( SkillName.Fencing, 40 ),
+							new SkillNameValue( SkillName.Stealth, 40 )
 						};
 					break;
 				}
@@ -496,12 +500,14 @@ namespace Server.Misc
 			{
 				case 1: // Warrior
 				{
-					EquipItem( new LeatherChest() );
+          // Warrior will receibe a newbie LeatherChest because of tactics, no need of 2
+					//EquipItem( new LeatherChest() );
 
 					break;
 				}
 				case 4: // Necromancer
 				{
+          addSkillItems = false;
 					EquipItem( new BoneHelm() );
 					EquipItem( NecroHue( new LeatherChest() ) );
 					EquipItem( NecroHue( new LeatherArms() ) );
@@ -510,32 +516,26 @@ namespace Server.Misc
 					EquipItem( NecroHue( new LeatherLegs() ) );
 					EquipItem( NecroHue( new Skirt() ) );
 					EquipItem( new Sandals( 0x8FD ) );
-
-					addSkillItems = false;
-
 					break;
 				}
 				case 5: // Paladin
 				{
-						EquipItem( new Broadsword() );
-						EquipItem( new Helmet() );
-						EquipItem( new PlateGorget() );
-						EquipItem( new RingmailArms() );
-						EquipItem( new RingmailChest() );
-						EquipItem( new RingmailLegs() );
-						EquipItem( new ThighBoots( 0x748 ) );
-						EquipItem( new Cloak( 0xCF ) );
-						EquipItem( new BodySash( 0xCF ) );
-
-                        addSkillItems = false;
-
-					break;
+          addSkillItems = false;
+					EquipItem( new Broadsword() );
+					EquipItem( new Helmet() );
+					EquipItem( new PlateGorget() );
+					EquipItem( new RingmailArms() );
+					EquipItem( new RingmailChest() );
+					EquipItem( new RingmailLegs() );
+					EquipItem( new ThighBoots( 0x748 ) );
+					EquipItem( new Cloak( 0xCF ) );
+					EquipItem( new BodySash( 0xCF ) );
+				  break;
 				}
 
 				case 6: // Samurai
 				{
 					addSkillItems = false;
-
 					PackItem( new Scissors() );
 					PackItem( new Bandage( 50 ) );
 
@@ -544,15 +544,14 @@ namespace Server.Misc
 				case 7: // Ninja
 				{
 					addSkillItems = false;
-					
 					break;
 				}
 			}
-
+      // This loop will ultimately add Items for each chosen skill
 			for ( int i = 0; i < skills.Length; ++i )
 			{
 				SkillNameValue snv = skills[i];
-
+        // Items will only be added if skill Value > 0, so choosing skill = 0 will do no good items wise
 				if ( snv.Value > 0 && ( snv.Name != SkillName.Stealth || prof == 7 ) && snv.Name != SkillName.RemoveTrap && snv.Name != SkillName.Spellweaving )
 				{
 					Skill skill = m.Skills[snv.Name];
@@ -687,10 +686,11 @@ namespace Server.Misc
 				}
 				case SkillName.Archery:
 				{
-					PackItem( new Arrow( 25 ) );
-
+					PackItem( new Arrow( 50 ) );
 					EquipItem( new Bow() );
-					
+          // Let's help a bit more Archers, since Arrows are expensive
+          PackItem( new LeatherChest() );
+
 					break;
 				}
 				case SkillName.ArmsLore:
@@ -828,7 +828,7 @@ namespace Server.Misc
 				}
 				case SkillName.Lumberjacking:
 				{
-					EquipItem( new Hatchet() );
+					PackItem( new Hatchet() );
 					break;
 				}
 				case SkillName.Macing:
@@ -925,7 +925,9 @@ namespace Server.Misc
 				}
 				case SkillName.Tactics:
 				{
-					EquipItem( new Katana() );
+					//EquipItem( new Katana() );
+          //Let's help a bit the crazy people who chose tactics
+          PackItem( new LeatherChest() );
 
 					break;
 				}

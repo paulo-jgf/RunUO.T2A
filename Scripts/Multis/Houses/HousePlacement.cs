@@ -50,8 +50,8 @@ namespace Server.Multis
 			if ( from.AccessLevel >= AccessLevel.GameMaster )
 				return HousePlacementResult.Valid; // Staff can place anywhere
 
-			if ( SpellHelper.IsFeluccaT2A( map, center ) )
-				return HousePlacementResult.BadRegion; // No houses in T2A
+      if ( SpellHelper.IsFeluccaT2A( map, center ) )
+				return HousePlacementResult.BadRegion; // T2A region (Lost Lands) can't have houses
 
 			NoHousingRegion noHousingRegion = (NoHousingRegion) Region.Find( center, map ).GetRegion( typeof( NoHousingRegion ) );
 
@@ -72,7 +72,7 @@ namespace Server.Multis
 			List<Point2D> yard = new List<Point2D>(), borders = new List<Point2D>();
 
 			/* RULES:
-			 * 
+			 *
 			 * 1) All tiles which are around the -outside- of the foundation must not have anything impassable.
 			 * 2) No impassable object or land tile may come in direct contact with any part of the house.
 			 * 3) Five tiles from the front and back of the house must be completely clear of all house tiles.
@@ -312,10 +312,10 @@ namespace Server.Multis
 
 			for ( int i = 0; i < yard.Count; i++ ) {
 				Sector sector = map.GetSector( yard[i] );
-				
+
 				if ( !_sectors.Contains( sector ) ) {
 					_sectors.Add( sector );
-					
+
 					if ( sector.Multis != null ) {
 						for ( int j = 0; j < sector.Multis.Count; j++ ) {
 							if ( sector.Multis[j] is BaseHouse ) {

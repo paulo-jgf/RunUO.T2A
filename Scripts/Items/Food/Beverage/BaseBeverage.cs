@@ -248,7 +248,9 @@ namespace Server.Items
                 {
                     Content = BeverageType.Milk;
                     Quantity = MaxQuantity;
-                    from.SendLocalizedMessage( 1080197 ); // You fill the container with milk.
+                    // Client doesnt have this message...
+                    // from.SendLocalizedMessage( 1080197 ); // You fill the container with milk.
+                    from.SendMessage( "You fill the container with milk." );
                 }
             }
         }
@@ -410,8 +412,16 @@ namespace Server.Items
             }
             else if( from == targ )
             {
+
                 if( from.Thirst < 20 )
+                {
                     from.Thirst += 1;
+                    from.SendMessage("You drink it!"); // There were no messages for driking
+                }
+                else
+                {
+                    from.SendMessage("You feel completely refreshed."); // There were no messages for no thirsty
+                }
 
                 if( ContainsAlchohol )
                 {
@@ -443,7 +453,7 @@ namespace Server.Items
             else if( targ is BaseWaterContainer )
             {
                 BaseWaterContainer bwc = targ as BaseWaterContainer;
-				
+
                 if( Content != BeverageType.Water )
                 {
                     from.SendLocalizedMessage( 500842 ); // Can't pour that in there.
@@ -453,7 +463,7 @@ namespace Server.Items
                     from.SendLocalizedMessage( 500841 ); // That has something in it.
                 }
                 else
-                {				
+                {
                     int itNeeds = Math.Min( bwc.MaxQuantity - bwc.Quantity, Quantity );
 
                     if( itNeeds > 0 )

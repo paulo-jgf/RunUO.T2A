@@ -132,8 +132,8 @@ namespace Server.Menus.Questions
 			m_Mobile = beheld;
 			m_MarkUse = markUse;
 
-			Closable = false; 
-			Dragable = false; 
+			Closable = false;
+			Dragable = false;
 			Disposable = false;
 
 			AddBackground( 0, 0, 270, 320, 2600 );
@@ -158,7 +158,7 @@ namespace Server.Menus.Questions
 		{
 			StopClose();
 
-			m_Timer = new CloseTimer( m_Mobile );
+			m_Timer = new CloseTimer( m_Mobile ); //Define froze player timer until teleport
 			m_Timer.Start();
 
 			m_Mobile.Frozen = true;
@@ -193,11 +193,13 @@ namespace Server.Menus.Questions
 
 		private void Teleport( StuckMenuEntry entry )
 		{
-			if ( m_MarkUse ) 
+			if ( m_MarkUse )
 			{
 				m_Mobile.SendLocalizedMessage( 1010589 ); // You will be teleported within the next two minutes.
-
-				new TeleportTimer( m_Mobile, entry, TimeSpan.FromSeconds( 10.0 + Utility.RandomDouble() * 110.0 ) ).Start();
+				//Original RunUO line
+				//new TeleportTimer( m_Mobile, entry, TimeSpan.FromSeconds( 10.0 + Utility.RandomDouble() * 110.0 ) ).Start()
+				// Make new timer 30 seconds, enough for a kill
+				new TeleportTimer( m_Mobile, entry, TimeSpan.FromSeconds( 30.0 ) ).Start();
 
 				m_Mobile.UsedStuckMenu();
 			}
@@ -215,7 +217,8 @@ namespace Server.Menus.Questions
 			public CloseTimer( Mobile m ) : base( TimeSpan.Zero, TimeSpan.FromSeconds( 1.0 ) )
 			{
 				m_Mobile = m;
-				m_End = DateTime.Now + TimeSpan.FromMinutes( 3.0 );
+				// Defaut 3.0 minutes, trying to decrease Teleport timer to 30 seconds, may be here is not the right place
+				m_End = DateTime.Now + TimeSpan.FromMinutes( 0.5 );
 			}
 
 			protected override void OnTick()
@@ -231,8 +234,8 @@ namespace Server.Menus.Questions
 				{
 					m_Mobile.Frozen = true;
 				}
-			} 
-		} 
+			}
+		}
 
 		private class TeleportTimer : Timer
 		{

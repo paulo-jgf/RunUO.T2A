@@ -14,7 +14,7 @@ namespace Server
 
 		//configuration
 		private const int NPCCount = 1;//2 npcs per type (so a mage spawner will spawn 2 npcs, a alchemist and herbalist spawner will spawn 4 npcs total)
-		private const int HomeRange = 5;//How far should they wander?
+		private const int HomeRange = 4;//How far should they wander?
 		private const bool TotalRespawn = true;//Should we spawn them up right away?
 		private static TimeSpan MinTime = TimeSpan.FromMinutes( 2.5 );//min spawn time
 		private static TimeSpan MaxTime = TimeSpan.FromMinutes( 10.0 );//max spawn time
@@ -63,7 +63,7 @@ namespace Server
 
 						split = new string[]{ type, split[0], split[1], split[2] };
 
-						switch(split[0].ToLower()) 
+						switch(split[0].ToLower())
 						{
 							case "-healer:":
 								PlaceNPC( split[1], split[2], split[3], "Healer", "HealerGuildmaster" );
@@ -160,8 +160,8 @@ namespace Server
 							case "-beekeeper:":
 								PlaceNPC( split[1], split[2], split[3], "Beekeeper" );
 								break;
-							
-							
+
+
 								// Guilds & Misc
 							case "-tinkers guild:":
 								PlaceNPC( split[1], split[2], split[3], "TinkerGuildmaster" );

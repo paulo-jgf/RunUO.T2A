@@ -8,6 +8,8 @@ namespace Server.Misc
 	{
 		private const string AggressorFormat = "You are attacking {0}!";
 		private const string AggressedFormat = "{0} is attacking you!";
+    // Format inspired on Old UO, using both aggressor and aggressed names
+    private const string AggressionOldFormat = "{0} is attacking {1}!";
 		private const int Hue = 0x22;
 
 		private static TimeSpan Delay = TimeSpan.FromMinutes( 1.0 );
@@ -22,13 +24,18 @@ namespace Server.Misc
 			Mobile aggressor = e.Aggressor;
 			Mobile aggressed = e.Aggressed;
 
-			if ( !aggressor.Player || !aggressed.Player )
-				return;
+      // Show combat message only for PVP combat
+			//if ( !aggressor.Player || !aggressed.Player )
+			//	return;
 
 			if ( !CheckAggressions( aggressor, aggressed ) )
 			{
-				aggressor.LocalOverheadMessage( MessageType.Regular, Hue, true, String.Format( AggressorFormat, aggressed.Name ) );
-				aggressed.LocalOverheadMessage( MessageType.Regular, Hue, true, String.Format( AggressedFormat, aggressor.Name ) );
+        //Default RunUO shows only local messages for attacking
+				//aggressor.LocalOverheadMessage( MessageType.Regular, Hue, true, String.Format( AggressorFormat, aggressed.Name ) );
+				//aggressed.LocalOverheadMessage( MessageType.Regular, Hue, true, String.Format( AggressedFormat, aggressor.Name ) );
+
+        // Old style UO is Public overhead on attacker!
+        aggressor.PublicOverheadMessage( MessageType.Regular, Hue, true, String.Format( AggressionOldFormat, aggressor.Name, aggressed.Name ) );
 			}
 		}
 

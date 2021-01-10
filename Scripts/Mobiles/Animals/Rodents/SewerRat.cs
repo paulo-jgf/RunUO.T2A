@@ -1,3 +1,5 @@
+using Server.Items;
+
 namespace Server.Mobiles
 {
     [CorpseName( "a sewer rat corpse" )]
@@ -31,12 +33,16 @@ namespace Server.Mobiles
 			Tamable = true;
 			ControlSlots = 1;
 			MinTameSkill = -0.9;
+
+      // Fixing the amount of Gold on rats - erradication campaign to help new players
+      PackItem( new Gold( 5 ) );
 		}
 
+    /* Original loot is too much for a rat
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Poor );
-		}
+		}*/
 
 		public override int Meat{ get{ return 1; } }
 		public override FoodType FavoriteFood{ get{ return FoodType.Meat | FoodType.Eggs | FoodType.FruitsAndVegies; } }

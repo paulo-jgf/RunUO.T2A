@@ -212,11 +212,11 @@
 			</region>
 		</region>
 		<region type="TownRegion" priority="50" name="Minoc">
-			<rect x="2411" y="366" width="135" height="241" />
+			<rect x="2411" y="366" width="137" height="245" />
 			<rect x="2548" y="495" width="72" height="55" />
-			<rect x="2564" y="585" width="3" height="42" />
+			<rect x="2547" y="560" width="85" height="91" />
 			<rect x="2567" y="585" width="61" height="61" />
-			<rect x="2499" y="627" width="68" height="63" />
+			<rect x="2485" y="606" width="90" height="90" />
 			<go x="2466" y="544" z="0" />
 			<music name="Minoc" />
 			<region>
@@ -608,10 +608,10 @@
 			<rect x="1604" y="958" width="46" height="51" />
 			<go x="1638" y="974" z="0" />
 		</region>
-		<region priority="50" name="Mt Kendall">
-			<rect x="2552" y="448" width="71" height="59" />
-			<rect x="2547" y="380" width="43" height="68" />
-			<rect x="2590" y="413" width="33" height="35" />
+		<region type="GuardedRegion" priority="50" name="Mt Kendall">
+			<rect x="2548" y="448" width="90" height="62" />
+			<rect x="2547" y="380" width="43" height="70" />
+			<rect x="2590" y="413" width="33" height="37" />
 			<go x="2593" y="477" z="60" />
 		</region>
 		<region priority="50" name="Covetous Mine">

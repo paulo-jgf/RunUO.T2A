@@ -55,12 +55,13 @@ namespace Server.Items
 
 		public override int LabelNumber{ get{ return 1041314 + (int)m_PotionEffect; } }
 
-		public BasePotion( int itemID, PotionEffect effect ) : base( itemID )
+		public BasePotion( int itemID, PotionEffect effect) : base( itemID )
 		{
 			m_PotionEffect = effect;
-
+      // Default Stackable = false; // client won't show quantity gump for potion ItemID, so quiting on this idea...
 			Stackable = false;
 			Weight = 1.0;
+
 		}
 
 		public BasePotion( Serial serial ) : base( serial )
@@ -79,7 +80,7 @@ namespace Server.Items
 			if ( handTwo is BaseRanged )
 			{
 				BaseRanged ranged = (BaseRanged) handTwo;
-				
+
 				if ( ranged.Balanced )
 					return true;
 			}
@@ -157,7 +158,18 @@ namespace Server.Items
 			}
 
 			if( version ==  0 )
-				Stackable = false;
+      {
+          // Default = false not sure what his part does, but lets try to make em stack
+		      Stackable = false;
+      }
+
+      // Added to function to try and make stackable work, but I quit that because client won't show quantity gump for
+      // potion ItemID
+      /*if ( !Stackable )
+      {
+          Stackable = true;
+      }*/
+
 		}
 
 		public abstract void Drink( Mobile from );

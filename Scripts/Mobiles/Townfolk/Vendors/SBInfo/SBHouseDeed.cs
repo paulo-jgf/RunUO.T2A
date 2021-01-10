@@ -46,8 +46,8 @@ namespace Server.Mobiles
 		{
 			public InternalSellInfo()
 			{
-				/*
-				Add( typeof( StonePlasterHouseDeed ), 43800 );
+        // Remove as soons as economy allows it
+				/*Add( typeof( StonePlasterHouseDeed ), 43800 );
 				Add( typeof( FieldStoneHouseDeed ), 43800 );
 				Add( typeof( SmallBrickHouseDeed ), 43800 );
 				Add( typeof( WoodHouseDeed ), 43800 );
@@ -67,8 +67,7 @@ namespace Server.Mobiles
 				Add( typeof( VillaDeed ), 136500 );
 				Add( typeof( StoneWorkshopDeed ), 60600 );
 				Add( typeof( MarbleWorkshopDeed ), 60300 );
-				Add( typeof( SmallBrickHouseDeed ), 43800 );
-				*/
+				Add( typeof( SmallBrickHouseDeed ), 43800 );*/
 			}
 		}
 	}

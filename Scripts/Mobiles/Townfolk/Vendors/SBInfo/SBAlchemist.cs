@@ -38,10 +38,16 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Spider's Silk", typeof( SpidersSilk ), 3, 20, 0xF8D, 0 ) );
 				Add( new GenericBuyInfo( "Sulfurous Ash", typeof( SulfurousAsh ), 3, 20, 0xF8C, 0 ) );
 
-				Add( new GenericBuyInfo( "Empty bottle", typeof( Bottle ), 5, 100, 0xF0E, 0 ) ); 
-//				Add( new GenericBuyInfo( "Heating stand", typeof( HeatingStand ), 2, 100, 0x1849, 0 ) );
+				Add( new GenericBuyInfo( "Empty bottle", typeof( Bottle ), 5, 100, 0xF0E, 0 ) );
+        //Add( new GenericBuyInfo( "Heating stand", typeof( HeatingStand ), 2, 100, 0x1849, 0 ) );
 
 				Add( new GenericBuyInfo( "Hair dye", typeof( HairDye ), 37, 10, 0xEFF, 0 ) );
+
+        // Better potions, remove ASAP, when economy allows
+        Add( new GenericBuyInfo( "Heal Potion", typeof( HealPotion ), 40, 10, 0xF0C, 0 ) );
+        Add( new GenericBuyInfo( "Cure Potion", typeof( CurePotion ), 40, 10, 0xF07, 0 ) );
+        Add( new GenericBuyInfo( "Greater Heal", typeof( GreaterHealPotion ), 120, 10, 0xF0C, 0 ) );
+        Add( new GenericBuyInfo( "Greater Cure", typeof( GreaterCurePotion ), 120, 10, 0xF07, 0 ) );
 			}
 		}
 
@@ -49,14 +55,14 @@ namespace Server.Mobiles
 		{
 			public InternalSellInfo()
 			{
-				Add( typeof( BlackPearl ), 3 ); 
-				Add( typeof( Bloodmoss ), 3 ); 
-				Add( typeof( MandrakeRoot ), 2 ); 
-				Add( typeof( Garlic ), 2 ); 
-				Add( typeof( Ginseng ), 2 ); 
-				Add( typeof( Nightshade ), 2 ); 
-				Add( typeof( SpidersSilk ), 2 ); 
-				Add( typeof( SulfurousAsh ), 2 ); 
+				Add( typeof( BlackPearl ), 3 );
+				Add( typeof( Bloodmoss ), 3 );
+				Add( typeof( MandrakeRoot ), 2 );
+				Add( typeof( Garlic ), 2 );
+				Add( typeof( Ginseng ), 2 );
+				Add( typeof( Nightshade ), 2 );
+				Add( typeof( SpidersSilk ), 2 );
+				Add( typeof( SulfurousAsh ), 2 );
 				Add( typeof( Bottle ), 3 );
 				Add( typeof( MortarPestle ), 4 );
 				Add( typeof( HairDye ), 19 );

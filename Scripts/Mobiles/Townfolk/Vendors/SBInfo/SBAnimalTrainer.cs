@@ -18,15 +18,19 @@ namespace Server.Mobiles
 		{
 			public InternalBuyInfo()
 			{
+        // To discover the animal's ItemID (argument that comes before hue, ex do is 217) create one in game
+        // type [props and get it's BodyValue Attribute. Rideable Llama is 220.
 				Add( new AnimalBuyInfo( 1, "A cat", typeof( Cat ), 132, 10, 201, 0 ) );
-//				Add( new AnimalBuyInfo( 1, typeof( Dog ), 170, 10, 217, 0 ) );
-//				Add( new AnimalBuyInfo( 1, typeof( Horse ), 550, 10, 204, 0 ) );
+				Add( new AnimalBuyInfo( 1, "A dog", typeof( Dog ), 170, 10, 217, 0 ) );
+				Add( new AnimalBuyInfo( 1, "A horse", typeof( Horse ), 550, 10, 204, 0 ) );
 				Add( new AnimalBuyInfo( 1, "A pack horse", typeof( PackHorse ), 631, 10, 291, 0 ) );
 				Add( new AnimalBuyInfo( 1, "A pack llama", typeof( PackLlama ), 565, 10, 292, 0 ) );
 				Add( new AnimalBuyInfo( 1, "A raven", typeof( Raven ), 156, 10, 205, 0 ) );
 				Add( new AnimalBuyInfo( 1, "A rabbit", typeof( Rabbit ), 106, 10, 205, 0 ) );
+				Add( new AnimalBuyInfo( 1, "An eagle", typeof( Eagle ), 402, 10, 5, 0 ) );
 
-//				Add( new AnimalBuyInfo( 1, typeof( Eagle ), 402, 10, 5, 0 ) );
+        Add( new AnimalBuyInfo( 1, "A Llama", typeof( RidableLlama ), 500, 10, 220, 0 ) );
+
 //				Add( new AnimalBuyInfo( 1, typeof( BrownBear ), 855, 10, 167, 0 ) );
 //				Add( new AnimalBuyInfo( 1, typeof( GrizzlyBear ), 1767, 10, 212, 0 ) );
 //				Add( new AnimalBuyInfo( 1, typeof( Panther ), 1271, 10, 214, 0 ) );

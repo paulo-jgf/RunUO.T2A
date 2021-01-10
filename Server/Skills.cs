@@ -594,7 +594,7 @@ namespace Server
 				m_GainFactor = value;
 			}
 		}
-
+    // Making some changes to stats increse factors, some are too hard to increase the original lines will be kept commented
 		private static SkillInfo[] m_Table = new SkillInfo[58]
 			{
 				new SkillInfo(  0, "Alchemy",			0.0,	5.0,	5.0,	"Alchemist",	null,	0.0,	0.5,	0.5,	1.0 ),
@@ -618,15 +618,18 @@ namespace Server
 				new SkillInfo( 18, "Fishing",			0.0,	0.0,	0.0,	"Fisherman",	null,	0.5,	0.5,	0.0,	1.0 ),
 				new SkillInfo( 19, "Forensic Evaluation",	0.0,	0.0,	0.0,	"Detective",	null,	0.0,	0.2,	0.8,	1.0 ),
 				new SkillInfo( 20, "Herding",			16.25,	6.25,	2.5,	"Shepherd",	null,	1.625,	0.625,	0.25,	1.0 ),
-				new SkillInfo( 21, "Hiding",			0.0,	0.0,	0.0,	"Shade",	null,	0.0,	0.8,	0.2,	1.0 ),
+				//new SkillInfo( 21, "Hiding",			0.0,	0.0,	0.0,	"Shade",	null,	0.0,	0.8,	0.2,	1.0 ),
+        new SkillInfo( 21, "Hiding",			0.0,	12.0,	1.0,	"Shade",	null,	0.0,	1.2,	0.2,	1.0 ),
 				new SkillInfo( 22, "Provocation",		0.0,	4.5,	0.5,	"Rouser",		null,	0.0,	0.45,	0.05,	1.0 ),
 				new SkillInfo( 23, "Inscription",		0.0,	2.0,	8.0,	"Scribe",	null,	0.0,	0.2,	0.8,	1.0 ),
 				new SkillInfo( 24, "Lockpicking",		0.0,	25.0,	0.0,	"Infiltrator",	null,	0.0,	2.0,	0.0,	1.0 ),
 				new SkillInfo( 25, "Magery",			0.0,	0.0,	15.0,	"Mage",		null,	0.0,	0.0,	1.5,	1.0 ),
 				new SkillInfo( 26, "Resisting Spells",		0.0,	0.0,	0.0,	"Warder",		null,	0.25,	0.25,	0.5,	1.0 ),
-				new SkillInfo( 27, "Tactics",			0.0,	0.0,	0.0,	"Tactician",	null,	0.0,	0.0,	0.0,	1.0 ),
+				//new SkillInfo( 27, "Tactics",			0.0,	0.0,	0.0,	"Tactician",	null,	0.0,	0.0,	0.0,	1.0 ),
+        new SkillInfo( 27, "Tactics",			0.0,	0.0,	1.0,	"Tactician",	null,	0.0,	0.0,	0.2,	1.0 ),
 				new SkillInfo( 28, "Snooping",			0.0,	25.0,	0.0,	"Spy",	null,	0.0,	2.5,	0.0,	1.0 ),
-				new SkillInfo( 29, "Musicianship",		0.0,	0.0,	0.0,	"Bard",		null,	0.0,	0.8,	0.2,	1.0 ),
+				//new SkillInfo( 29, "Musicianship",		0.0,	0.0,	0.0,	"Bard",		null,	0.0,	0.8,	0.2,	1.0 ),
+        new SkillInfo( 29, "Musicianship",		0.0,	4.0,	1.0,	"Bard",		null,	0.0,	0.8,	0.2,	1.0 ),
 				new SkillInfo( 30, "Poisoning",			0.0,	4.0,	16.0,	"Assassin",	null,	0.0,	0.4,	1.6,	1.0 ),
 				new SkillInfo( 31, "Archery",			2.5,	7.5,	0.0,	"Archer",	null,	0.25,	0.75,	0.0,	1.0 ),
 				new SkillInfo( 32, "Spirit Speak",		0.0,	0.0,	0.0,	"Medium",	null,	0.0,	0.0,	1.0,	1.0 ),
@@ -644,7 +647,8 @@ namespace Server
 				new SkillInfo( 44, "Lumberjacking",		20.0,	0.0,	0.0,	"Lumberjack",	null,	2.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( 45, "Mining",			20.0,	0.0,	0.0,	"Miner",	null,	2.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( 46, "Meditation",		0.0,	0.0,	0.0,	"Stoic",	null,	0.0,	0.0,	0.0,	1.0 ),
-				new SkillInfo( 47, "Stealth",			0.0,	0.0,	0.0,	"Rogue",	null,	0.0,	0.0,	0.0,	1.0 ),
+				//new SkillInfo( 47, "Stealth",			0.0,	0.0,	0.0,	"Rogue",	null,	0.0,	0.0,	0.0,	1.0 ),
+        new SkillInfo( 47, "Stealth",			0.0,	2.0,	1.0,	"Rogue",	null,	0.0,	0.2,	0.1,	1.0 ),
 				new SkillInfo( 48, "Remove Trap",		0.0,	0.0,	0.0,	"Trap Specialist",	null,	0.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( 49, "Necromancy",		0.0,	0.0,	0.0,	"Necromancer",	null,	0.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( 50, "Focus",			0.0,	0.0,	0.0,	"Driven",	null,	0.0,	0.0,	0.0,	1.0 ),
@@ -858,7 +862,7 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
 		public int Cap
 		{
-			get{ return m_Cap; } 
+			get{ return m_Cap; }
 			set{ m_Cap = value; }
 		}
 

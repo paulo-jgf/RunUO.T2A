@@ -8,7 +8,7 @@ namespace Server.Items
 {
     public class Bandage : Item, IDyable
 	{
-		public static int Range = 1; 
+		public static int Range = 1;
 
 		public override double DefaultWeight
 		{
@@ -176,6 +176,7 @@ namespace Server.Items
 			int healerNumber = -1, patientNumber = -1;
 			bool playSound = true;
 			bool checkSkills = false;
+      double bonus = 0.0;
 
 			SkillName primarySkill = GetPrimarySkill( m_Patient );
 			SkillName secondarySkill = GetSecondarySkill( m_Patient );
@@ -209,6 +210,7 @@ namespace Server.Items
 					{
 						healerNumber = 500965; // You are able to resurrect your patient.
 						patientNumber = -1;
+            bonus = 30.0; // Res will give a skill gain bonus
 
 						m_Patient.PlaySound( 0x214 );
 						m_Patient.FixedEffect( 0x376A, 10, 16 );
@@ -237,6 +239,7 @@ namespace Server.Items
 					{
 						healerNumber = m_Healer == m_Patient ? -1 : 1010058; // You have cured the target of all poisons.
 						patientNumber = 1010059; // You have been cured of all poisons.
+            bonus = 20.0; // Cure will give a skill gain bonus
 					}
 					else
 					{
@@ -304,10 +307,13 @@ namespace Server.Items
 			if ( playSound )
 				m_Patient.PlaySound( 0x57 );
 
+      // This is the only original Healing checkSkill, it is very painfull to gain, original "gaincap value" is 120.0
+      // Let's add a bonus to healing poison and ressurecting, and lower the gaincap to 100.0 to make it less hard
 			if ( checkSkills )
 			{
 				m_Healer.CheckSkill( secondarySkill, 0.0, 120.0 );
-				m_Healer.CheckSkill( primarySkill, 0.0, 120.0 );
+				//m_Healer.CheckSkill( primarySkill, 0.0, 120.0 );
+        m_Healer.CheckSkill( primarySkill, 0.0, 100.0 - bonus);
 			}
 		}
 
@@ -366,7 +372,7 @@ namespace Server.Items
 				if ( context != null )
 					context.StopHeal();
 				seconds *= 1000;
-				
+
 				context = new BandageContext( healer, patient, TimeSpan.FromMilliseconds( seconds ) );
 
 				m_Table[healer] = context;

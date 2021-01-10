@@ -14,54 +14,54 @@ namespace Server.Misc
 		{
 			// true if this skill uses the anti-macro code, false if it does not
 			false,// Alchemy = 0,
-			true,// Anatomy = 1,
-			true,// AnimalLore = 2,
-			true,// ItemID = 3,
-			true,// ArmsLore = 4,
+			false,// Anatomy = 1,
+			false,// AnimalLore = 2,
+			false,// ItemID = 3,
+			false,// ArmsLore = 4,
 			false,// Parry = 5,
 			true,// Begging = 6,
 			false,// Blacksmith = 7,
 			false,// Fletching = 8,
-			true,// Peacemaking = 9,
-			true,// Camping = 10,
+			false,// Peacemaking = 9,
+			false,// Camping = 10,
 			false,// Carpentry = 11,
 			false,// Cartography = 12,
 			false,// Cooking = 13,
-			true,// DetectHidden = 14,
-			true,// Discordance = 15,
-			true,// EvalInt = 16,
-			true,// Healing = 17,
-			true,// Fishing = 18,
-			true,// Forensics = 19,
-			true,// Herding = 20,
-			true,// Hiding = 21,
-			true,// Provocation = 22,
+			false,// DetectHidden = 14,
+			false,// Discordance = 15,
+			false,// EvalInt = 16,
+			false,// Healing = 17,
+			false,// Fishing = 18,
+			false,// Forensics = 19,
+			false,// Herding = 20,
+			false,// Hiding = 21,
+			false,// Provocation = 22,
 			false,// Inscribe = 23,
-			true,// Lockpicking = 24,
-			true,// Magery = 25,
-			true,// MagicResist = 26,
+			false,// Lockpicking = 24,
+			false,// Magery = 25,
+			false,// MagicResist = 26,
 			false,// Tactics = 27,
 			true,// Snooping = 28,
-			true,// Musicianship = 29,
-			true,// Poisoning = 30,
+			false,// Musicianship = 29,
+			false,// Poisoning = 30,
 			false,// Archery = 31,
-			true,// SpiritSpeak = 32,
+			false,// SpiritSpeak = 32,
 			true,// Stealing = 33,
 			false,// Tailoring = 34,
-			true,// AnimalTaming = 35,
-			true,// TasteID = 36,
+			false,// AnimalTaming = 35,
+			false,// TasteID = 36,
 			false,// Tinkering = 37,
-			true,// Tracking = 38,
-			true,// Veterinary = 39,
+			false,// Tracking = 38,
+			false,// Veterinary = 39,
 			false,// Swords = 40,
 			false,// Macing = 41,
 			false,// Fencing = 42,
 			false,// Wrestling = 43,
-			true,// Lumberjacking = 44,
-			true,// Mining = 45,
-			true,// Meditation = 46,
-			true,// Stealth = 47,
-			true,// RemoveTrap = 48,
+			false,// Lumberjacking = 44,
+			false,// Mining = 45,
+			false,// Meditation = 46,
+			false,// Stealth = 47,
+			false,// RemoveTrap = 48,
 			true,// Necromancy = 49,
 			false,// Focus = 50,
 			true,// Chivalry = 51
@@ -258,6 +258,7 @@ namespace Server.Misc
 
 			switch ( stat )
 			{
+        //Individual statscap
 				case Stat.Str: return @from.StrLock == StatLockType.Up && @from.RawStr < 125;
 				case Stat.Dex: return @from.DexLock == StatLockType.Up && @from.RawDex < 125;
 				case Stat.Int: return @from.IntLock == StatLockType.Up && @from.RawInt < 125;
@@ -268,7 +269,8 @@ namespace Server.Misc
 
 		public static void IncreaseStat( Mobile from, Stat stat, bool atrophy )
 		{
-			atrophy = atrophy || @from.RawStatTotal >= @from.StatCap;
+      /* Atrophy true when too hard or status are at cap */
+      atrophy = atrophy || @from.RawStatTotal >= @from.StatCap;
 
 			switch ( stat )
 			{
@@ -317,11 +319,13 @@ namespace Server.Misc
 
 					break;
 				}
-			}
+      }
 		}
 
-		private static TimeSpan m_StatGainDelay = TimeSpan.FromMinutes( 15 );
-		private static TimeSpan m_PetStatGainDelay = TimeSpan.FromMinutes( 5.0 );
+    // Delay for stats gains (used individualy for each stat, not for any stat gain)
+    // Defaults 15.0 minutes players, 5.0 minutes pets
+		private static TimeSpan m_StatGainDelay = TimeSpan.FromMinutes( 3.0 );
+		private static TimeSpan m_PetStatGainDelay = TimeSpan.FromMinutes( 3.0 );
 
 		public static void GainStat( Mobile from, Stat stat )
 		{
@@ -366,7 +370,11 @@ namespace Server.Misc
 				}
 			}
 
+      /* This makes Stat increase more difficult near the total cap, original formula:
 			bool atrophy = @from.RawStatTotal / (double)@from.StatCap >= Utility.RandomDouble();
+      We are imposing here a cap for the maximum difficulty, it will get harder until statssum = 160 (160/225 ~ 0,71)
+      wich is about 2 times starting difficulty (80/225 = 0,355..) */
+      bool atrophy = Math.Min(@from.RawStatTotal / (double)@from.StatCap, 0.71) >= Utility.RandomDouble();
 
 			IncreaseStat( from, stat, atrophy );
 		}

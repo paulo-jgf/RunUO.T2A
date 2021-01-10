@@ -19,7 +19,8 @@ namespace Server.Multis
 		public static int MaxFriends { get { return 50; } }
 		public static int MaxBans { get { return 50; } }
 
-		public const bool DecayEnabled = true;
+    // Small Shard, House Decay off
+		public const bool DecayEnabled = false;
 
 		public static void Decay_OnTick()
 		{
