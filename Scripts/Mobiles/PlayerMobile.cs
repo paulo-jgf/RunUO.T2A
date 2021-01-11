@@ -514,6 +514,8 @@ namespace Server.Mobiles
 		{
 			Mobile from = e.Mobile;
 
+      from.BankBox.MaxItems = 2000; // Setting Max items in player bank to 2k
+
 			if ( AccountHandler.LockdownLevel > AccessLevel.Player )
 			{
 				string notice;
