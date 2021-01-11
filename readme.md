@@ -1,4 +1,8 @@
-All credits go to people behind RunUO, and to Grimoric. Grimoric's T2A RunUO is the very best ready to go T2A era UO emulator. In this fork I fixed a few minor things, like Magincia Moongate, some messages, a missing skill check for Resist Spells gain, but in the other hand I changed quite some things that made the server less T2A accurate: difficulty cap in stats gains, different difficulty for Healing skill gains, guarded Minoc Town Mines, custom timers for character deletion, stuck menu, corpse decay, few player only made/obtained items are sold by vendors to make the game more enjoyable if there is no live economy, etc.
+All credits for the hard work goes to people behind RunUO, and to Grimoric. Grimoric's T2A RunUO is the very best ready to go T2A era UO emulator.
+
+This fork is a hobby shard affectionately called Época de Paz 2, after Época de Paz shard, my first contact with coding a long time ago.
+
+ I fixed a few minor things, like Magincia Moongate, some messages, a missing skill check for Resist Spells gain, but on the other hand I changed quite some things that made the server less T2A accurate: difficulty cap in stats gains, different difficulty for Healing skill gains, guarded Minoc Town Mines, custom timers for stuck menu, corpse decay, house decay (off), a few player only made/obtained items are now sold by vendors to make the game more enjoyable if there is no live economy, etc.
 
 How to start, as simples as it gets (Windows 7+, and will probably work the same for any RunUO/ServUO starts)
 Quick note: RunUO requires Microsoft.NET Framework and may be some other things. If you have trouble with prerequisites please google around.

@@ -38,8 +38,8 @@ namespace Server.Misc
 		 */
 
 		// public static readonly string Address = null;
-    // IMPORTANT!!! Discovered by testing that the external IP needs to be declared here for people to connect
-    public static readonly string Address = "177.41.116.185";
+    // IMPORTANT!!! External IP needs to be declared here for people to connect
+    public static readonly string Address = "179.182.169.81";
 		public static readonly string ServerName = "Epoca de Paz 2 RUO T2A" + System.Reflection.Assembly.GetEntryAssembly().GetName().Version.MinorRevision;
 
 		public static readonly bool AutoDetect = true;

@@ -26,3 +26,4 @@
 /throttle.log
 /Data/objects.xml
 /Crash*.*
+/Scripts/Misc/ServerList.cs
