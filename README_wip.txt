@@ -78,6 +78,10 @@ OBS: Se um dia quiser fazer arquivos de config para o RunUO como no ServUO, que 
 Usar como exemplo o Server\Movile.cs e ver o m_StatCap no começo da função DefaultMobileInit()
 
 ------------------------------------------------------------------------------------------
+GIT
+git update-index --assume-unchanged ./Scripts/Misc/ServerList.cs
+Para não ficar upando o seu IP
+------------------------------------------------------------------------------------------
 
 COMANDOS ADMIN
 Todos começam com [ exemplo: [add
