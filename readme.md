@@ -13,7 +13,7 @@ This will probably work the same for any RunUO/ServUO startings.
 - After done, execute RunUO.exe. Follow instructions, have in hand UO installation path (you can edit at RunUO\Scripts\Misc\Datapath.cs)
 - Accept Firewall permissions. To connect use razor directed to 127.0.0.1 , port 2593
 
-## How to start your world:
+## How to start your world
 - [UOAMVendors    				(Create most vendors, just a few are wrong. Magincia, Cove banker... may fix someday)
 - [DoorGen        				(Create most doors. Guard outpost doors are missing, and a few others... may fix someday)
 - [TelGen         				(Create teleporters, that connects world regions, dungeons, etc)
@@ -21,12 +21,12 @@ This will probably work the same for any RunUO/ServUO startings.
 - [xmlimportmap Data\Spawners\Monsters		(Monsters, wild life, town life, etc)
 - [MoonGen                (Create Moongates)
 
-## How to let people in the server:
+## How to let people in the server
 - If you are under a router you will need to create a rule (search for NAT, Virtual Server, etc in you router configuration) that directs 2593 port (TCP protocol) to the local address of the PC running RunUO.
 - Open RunUO\Scripts\Misc\ServerList.cs and change Address = null; null value to your IPv4 public address.
 - Provide people you want in your public IP address, and it should work.
 
-## A little help to get you going with adjustments, if you want to:
+## A little help to get you going with adjustments, if you want to
 - Server name: Scripts\Items\Misc\ServerList.cs edit the string part of ServerName
 - Guarded Regions: RunUO\Data\Regions.xml
 - Stats cap: Server\Mobile.cs m_StatCap = 225 (more than one line to change)

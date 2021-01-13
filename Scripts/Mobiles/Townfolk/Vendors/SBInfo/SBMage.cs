@@ -72,7 +72,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Wall of Stone Scroll", typeof( WallOfStoneScroll ), 32, 20, 0x1F44, 0 ) );
 
 				// Lets add some recall and mark scrolls for now. It should be removed to preserve economy ASAP.
-				Add( new GenericBuyInfo( "Recall Scroll", typeof( RecallScroll ), 50, 20, 0x1F4C, 0 ) );
+				Add( new GenericBuyInfo( "Recall Scroll", typeof( RecallScroll ), 35, 20, 0x1F4C, 0 ) );
 				Add( new GenericBuyInfo( "Mark Scroll", typeof( MarkScroll ), 150, 20, 0x1F59, 0 ) );
 
 				// ID Wand for now. It should be removed to preserve economy ASAP.
