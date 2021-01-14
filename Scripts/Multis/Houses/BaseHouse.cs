@@ -1700,7 +1700,8 @@ namespace Server.Multis
 			writer.Write( (int) m_MaxSecures );
 
 			// Items in locked down containers that aren't locked down themselves must decay!
-			for ( int i = 0; i < m_LockDowns.Count; ++i )
+      // But not in EPSHARD..
+			/*for ( int i = 0; i < m_LockDowns.Count; ++i )
 			{
 				Item item = (Item)m_LockDowns[i];
 
@@ -1717,7 +1718,7 @@ namespace Server.Multis
 							Timer.DelayCall( TimeSpan.Zero, new TimerCallback( child.Delete ) );
 					}
 				}
-			}
+			}*/
 		}
 
 		public override void Deserialize( GenericReader reader )

@@ -73,6 +73,10 @@ Substituir em todos os campos que tiverem m_Cap = 7000
   m_DefaultDecayTime
   m_BoneDecayTime
   m_DefaultDecayTime (DecayedCorpse.cs)
+
+- Decay de items dentro de casas!
+  Script\Regions\HouseRegion.cs
+  public override bool OnDecay( Item item )
 	
 OBS: Se um dia quiser fazer arquivos de config para o RunUO como no ServUO, que tem uma pasta Config
 Usar como exemplo o Server\Movile.cs e ver o m_StatCap no começo da função DefaultMobileInit()
