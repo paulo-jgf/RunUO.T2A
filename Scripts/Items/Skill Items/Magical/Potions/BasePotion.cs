@@ -159,7 +159,6 @@ namespace Server.Items
 
 			if( version ==  0 )
       {
-          // Default = false not sure what his part does, but lets try to make em stack
 		      Stackable = false;
       }
 
@@ -179,6 +178,9 @@ namespace Server.Items
 			m.RevealingAction();
 
 			m.PlaySound( 0x2D6 );
+
+      // Driking potions returns an empty bottle now
+      m.AddToBackpack( new Bottle() );
 
 			if ( m.Body.IsHuman && !m.Mounted )
 				m.Animate( 34, 5, 1, true, false, 0 );

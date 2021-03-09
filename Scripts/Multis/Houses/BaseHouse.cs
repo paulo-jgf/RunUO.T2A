@@ -1209,7 +1209,9 @@ namespace Server.Multis
 
 		public void AddSecure( Mobile m, Item item )
 		{
-			if ( m_Secures == null || !IsOwner( m ) || !IsActive )
+      // Co-Owners can now secure things
+			// if ( m_Secures == null || !IsOwner( m ) || !IsActive )
+      if ( m_Secures == null || !IsOwner( m ) || !IsActive || !IsCoOwner( m ) )
 				return;
 
 			if ( !IsInside( item ) )
@@ -1291,7 +1293,9 @@ namespace Server.Multis
 
 		public void ReleaseSecure( Mobile m, Item item )
 		{
-			if ( m_Secures == null || !IsOwner( m ) || item is StrongBox || !IsActive )
+      // Co-Owners can now unsecure things
+			// if ( m_Secures == null || !IsOwner( m ) || item is StrongBox || !IsActive )
+      if ( m_Secures == null || !IsOwner( m ) || item is StrongBox || !IsActive || !IsCoOwner( m ) )
 				return;
 
 			for ( int i = 0; i < m_Secures.Count; ++i )

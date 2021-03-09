@@ -28,21 +28,22 @@ namespace Server.Mobiles
 
 		private static HairstylistBuyInfo[] m_SellList = new HairstylistBuyInfo[]
 			{
-				new HairstylistBuyInfo( 1018357, 50000, false, typeof( ChangeHairstyleGump ), new object[]
+        // Too high prices... lets change it
+				new HairstylistBuyInfo( 1018357, 500, false, typeof( ChangeHairstyleGump ), new object[]
 					{ From, Vendor, Price, false, ChangeHairstyleEntry.HairEntries } ),
-				new HairstylistBuyInfo( 1018358, 50000, true, typeof( ChangeHairstyleGump ), new object[]
+				new HairstylistBuyInfo( 1018358, 500, true, typeof( ChangeHairstyleGump ), new object[]
 					{ From, Vendor, Price, true, ChangeHairstyleEntry.BeardEntries } ),
 				new HairstylistBuyInfo( 1018359, 50, false, typeof( ChangeHairHueGump ), new object[]
 					{ From, Vendor, Price, true, true, ChangeHairHueEntry.RegularEntries } ),
-				new HairstylistBuyInfo( 1018360, 500000, false, typeof( ChangeHairHueGump ), new object[]
+				new HairstylistBuyInfo( 1018360, 500, false, typeof( ChangeHairHueGump ), new object[]
 					{ From, Vendor, Price, true, true, ChangeHairHueEntry.BrightEntries } ),
-				new HairstylistBuyInfo( 1018361, 30000, false, typeof( ChangeHairHueGump ), new object[]
+				new HairstylistBuyInfo( 1018361, 3000, false, typeof( ChangeHairHueGump ), new object[]
 					{ From, Vendor, Price, true, false, ChangeHairHueEntry.RegularEntries } ),
-				new HairstylistBuyInfo( 1018362, 30000, true, typeof( ChangeHairHueGump ), new object[]
+				new HairstylistBuyInfo( 1018362, 3000, true, typeof( ChangeHairHueGump ), new object[]
 					{ From, Vendor, Price, false, true, ChangeHairHueEntry.RegularEntries } ),
-				new HairstylistBuyInfo( 1018363, 500000, false, typeof( ChangeHairHueGump ), new object[]
+				new HairstylistBuyInfo( 1018363, 500, false, typeof( ChangeHairHueGump ), new object[]
 					{ From, Vendor, Price, true, false, ChangeHairHueEntry.BrightEntries } ),
-				new HairstylistBuyInfo( 1018364, 500000, true, typeof( ChangeHairHueGump ), new object[]
+				new HairstylistBuyInfo( 1018364, 500, true, typeof( ChangeHairHueGump ), new object[]
 					{ From, Vendor, Price, false, true, ChangeHairHueEntry.BrightEntries } )
 			};
 
